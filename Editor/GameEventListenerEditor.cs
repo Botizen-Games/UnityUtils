@@ -52,10 +52,12 @@ namespace BG.UnityUtils.Editor
             for (int i = 0; i < list.arraySize; i++)
             {
                 SerializedProperty eventAndResponses = list.GetArrayElementAtIndex(i);
-                SerializedProperty _name = eventAndResponses.FindPropertyRelative("Name");
-                SerializedProperty _event = eventAndResponses.FindPropertyRelative("Event");
-                SerializedProperty responseType = eventAndResponses.FindPropertyRelative("ResponseType");
-                SerializedProperty response = eventAndResponses.FindPropertyRelative("Response");
+                SerializedProperty _name = eventAndResponses.FindPropertyRelative("name");
+                SerializedProperty _event = eventAndResponses.FindPropertyRelative("gameEvent");
+                SerializedProperty isDelayed = eventAndResponses.FindPropertyRelative("isDelayed");
+                SerializedProperty delay = eventAndResponses.FindPropertyRelative("delay");
+                SerializedProperty responseType = eventAndResponses.FindPropertyRelative("responseType");
+                SerializedProperty response = eventAndResponses.FindPropertyRelative("response");
                 SerializedProperty responseForString = eventAndResponses.FindPropertyRelative("responseForString");
                 SerializedProperty responseForInt = eventAndResponses.FindPropertyRelative("responseForInt");
                 SerializedProperty responseForFloat = eventAndResponses.FindPropertyRelative("responseForFloat");
@@ -69,6 +71,13 @@ namespace BG.UnityUtils.Editor
                 {
                     _name.stringValue = EditorGUILayout.TextField("Event Name", _name.stringValue);
                     _event.objectReferenceValue = EditorGUILayout.ObjectField("Event", _event.objectReferenceValue, typeof(GameEvent), false);
+                    isDelayed.boolValue = EditorGUILayout.Toggle("Is Delayed", isDelayed.boolValue);
+
+                    if (isDelayed.boolValue)
+                    {
+                        delay.floatValue = EditorGUILayout.FloatField("Delay", delay.floatValue);
+                    }
+
                     EventAndResponse.ResponseTypes type = (EventAndResponse.ResponseTypes)EditorGUILayout.EnumFlagsField("Response Types", (EventAndResponse.ResponseTypes)System.Enum.ToObject(typeof(EventAndResponse.ResponseTypes), responseType.intValue));
                     responseType.intValue = (int)type;
 

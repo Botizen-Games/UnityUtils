@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace BG.UnityUtils
@@ -24,7 +25,7 @@ namespace BG.UnityUtils
             {
                 foreach (EventAndResponse eventAndResponse in eventAndResponses)
                 {
-                    eventAndResponse.Event.RegisterListener(this);
+                    eventAndResponse.GameEvent.RegisterListener(this);
                 }
             }
         }
@@ -35,23 +36,35 @@ namespace BG.UnityUtils
             {
                 foreach (EventAndResponse eventAndResponse in eventAndResponses)
                 {
-                    eventAndResponse.Event.UnregisterListener(this);
+                    eventAndResponse.GameEvent.UnregisterListener(this);
                 }
             }
         }
 
-        public void OnEventRaised(GameEvent passedEvent)
+        public void OnEventRaised(GameEvent gameEvent)
         {
             for (int i = eventAndResponses.Count - 1; i >= 0; i--)
             {
-                if (passedEvent == eventAndResponses[i].Event)
+                if (gameEvent == eventAndResponses[i].GameEvent)
                 {
-                    eventAndResponses[i].EventRaised();
+                    if (eventAndResponses[i].IsDelayed)
+                    {
+                        StartCoroutine(InvokeDelayedEvent(eventAndResponses[i]));
+                    }
+                    else
+                    {
+                        eventAndResponses[i].EventRaised();
+                    }
                 }
             }
         }
-    }
 
+        IEnumerator InvokeDelayedEvent(EventAndResponse eventAndResponse)
+        {
+            yield return new WaitForSeconds(eventAndResponse.Delay);
+            eventAndResponse.EventRaised();
+        }
+    }
 
     [System.Serializable]
     public class EventAndResponse
@@ -68,46 +81,53 @@ namespace BG.UnityUtils
             All = ~0
         }
 
-        public string Name;
-        public GameEvent Event;
-        public ResponseTypes ResponseType;
-        public UnityEvent Response;
-        public ResponseWithString responseForString;
-        public ResponseWithInt responseForInt;
-        public ResponseWithFloat responseForFloat;
-        public ResponseWithBool responseForBool;
-        public ResponseWithGameObject responseForGameObject;
+        public string Name { get => name; set => name = value; }
+        public GameEvent GameEvent { get => gameEvent; set => gameEvent = value; }
+        public bool IsDelayed { get => isDelayed; set => isDelayed = value; }
+        public float Delay { get => delay; set => delay = value; }
+        public ResponseTypes ResponseType { get => responseType; set => responseType = value; }
+        public UnityEvent Response { get => response; set => response = value; }
+        public ResponseWithString ResponseForString { get => responseForString; set => responseForString = value; }
+        public ResponseWithInt ResponseForInt { get => responseForInt; set => responseForInt = value; }
+        public ResponseWithFloat ResponseForFloat { get => responseForFloat; set => responseForFloat = value; }
+        public ResponseWithBool ResponseForBool { get => responseForBool; set => responseForBool = value; }
+        public ResponseWithGameObject ResponseForGameObject { get => responseForGameObject; set => responseForGameObject = value; }
+
+        [SerializeField] private string name;
+        [SerializeField] private GameEvent gameEvent;
+        [SerializeField] private bool isDelayed;
+        [SerializeField] private float delay;
+        [SerializeField] private ResponseTypes responseType;
+        [SerializeField] private UnityEvent response;
+        [SerializeField] private ResponseWithString responseForString;
+        [SerializeField] private ResponseWithInt responseForInt;
+        [SerializeField] private ResponseWithFloat responseForFloat;
+        [SerializeField] private ResponseWithBool responseForBool;
+        [SerializeField] private ResponseWithGameObject responseForGameObject;
 
         public void EventRaised()
         {
-            if (Response?.GetPersistentEventCount() >= 1)
-            {
-                Response?.Invoke();
-            }
+            InvokeResponse(response);
+            InvokeResponse(responseForString, gameEvent._String);
+            InvokeResponse(responseForInt, gameEvent._Int);
+            InvokeResponse(responseForFloat, gameEvent._Float);
+            InvokeResponse(responseForBool, gameEvent._Bool);
+            InvokeResponse(responseForGameObject, gameEvent._GameObject);
+        }
 
-            if (responseForString?.GetPersistentEventCount() >= 1)
+        void InvokeResponse(UnityEvent response)
+        {
+            if (response?.GetPersistentEventCount() >= 1)
             {
-                responseForString.Invoke(Event._String);
+                response.Invoke();
             }
+        }
 
-            if (responseForInt?.GetPersistentEventCount() >= 1)
+        void InvokeResponse<T>(UnityEvent<T> response, T obj)
+        {
+            if (response?.GetPersistentEventCount() >= 1)
             {
-                responseForInt.Invoke(Event._Int);
-            }
-
-            if (responseForFloat?.GetPersistentEventCount() >= 1)
-            {
-                responseForFloat.Invoke(Event._Float);
-            }
-
-            if (responseForBool?.GetPersistentEventCount() >= 1)
-            {
-                responseForBool.Invoke(Event._Bool);
-            }
-
-            if (responseForGameObject?.GetPersistentEventCount() >= 1)
-            {
-                responseForGameObject.Invoke(Event._GameObject);
+                response.Invoke(obj);
             }
         }
     }
