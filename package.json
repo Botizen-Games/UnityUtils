@@ -1,0 +1,11 @@
+{
+  "name": "com.botizen-games.unity-utils",
+  "version": "1.0.0",
+  "displayName": "Unity Utils",
+  "description": "Unity Utils contains utility and helper classes and tools for ease of development.",
+  "documentationUrl": "",
+  "unity": "2020.1",
+  "author": {
+    "name": "Botizen Games"
+  }
+}

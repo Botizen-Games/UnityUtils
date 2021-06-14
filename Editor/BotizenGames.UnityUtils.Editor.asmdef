@@ -1,0 +1,17 @@
+{
+    "name": "BotizenGames.UnityUtils.Editor",
+    "references": [
+        "GUID:9d7a0f084bdc94348b0dcc79709a888a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
