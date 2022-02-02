@@ -201,16 +201,16 @@ namespace BG.UnityUtils.Editor
 
         void LoadConfig()
         {
-            searchInFolders = EditorPrefs.GetString("BG_UU_ObjectDirtier_Search");
-            ignoreExtensions = EditorPrefs.GetString("BG_UU_ObjectDirtier_IgnoreExt");
-            ignoreTypesMask = EditorPrefs.GetInt("BG_UU_ObjectDirtier_IgnoreTypes");
+            searchInFolders = EditorPrefs.GetString($"BG_UU_ObjectDirtier_Search_{Application.persistentDataPath.GetHashCode()}");
+            ignoreExtensions = EditorPrefs.GetString($"BG_UU_ObjectDirtier_IgnoreExt_{Application.persistentDataPath.GetHashCode()}");
+            ignoreTypesMask = EditorPrefs.GetInt($"BG_UU_ObjectDirtier_IgnoreTypes_{Application.persistentDataPath.GetHashCode()}");
         }
 
         void SaveConfig()
         {
-            EditorPrefs.SetString("BG_UU_ObjectDirtier_Search", searchInFolders);
-            EditorPrefs.SetString("BG_UU_ObjectDirtier_IgnoreExt", ignoreExtensions);
-            EditorPrefs.SetInt("BG_UU_ObjectDirtier_IgnoreTypes", ignoreTypesMask);
+            EditorPrefs.SetString($"BG_UU_ObjectDirtier_Search_{Application.persistentDataPath.GetHashCode()}", searchInFolders);
+            EditorPrefs.SetString($"BG_UU_ObjectDirtier_IgnoreExt_{Application.persistentDataPath.GetHashCode()}", ignoreExtensions);
+            EditorPrefs.SetInt($"BG_UU_ObjectDirtier_IgnoreTypes_{Application.persistentDataPath.GetHashCode()}", ignoreTypesMask);
         }
     }
 }
