@@ -5,21 +5,23 @@ namespace BG.UnityUtils
 {
     public abstract class RuntimeCollection<T> : ScriptableObject
     {
-        [System.NonSerialized] public List<T> Items = new List<T>();
+        public List<T> Items { get => items; }
+
+        private List<T> items = new List<T>();
 
         public void Add(T item)
         {
-            if (!Items.Contains(item))
+            if (!items.Contains(item))
             {
-                Items.Add(item);
+                items.Add(item);
             }
         }
 
         public void Remove(T item)
         {
-            if (Items.Contains(item))
+            if (items.Contains(item))
             {
-                Items.Remove(item);
+                items.Remove(item);
             }
         }
     }
