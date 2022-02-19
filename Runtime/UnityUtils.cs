@@ -103,13 +103,5 @@ namespace BG.UnityUtils
                 PlayAudio(source, clips, interrupt);
             }
         }
-
-        /// <summary>Is this number even?</summary>
-        /// <param name="x">The number.</param>
-        public static bool IsEven(int x) => x % 2 == 0;
-
-        /// <summary>Is this number odd?</summary>
-        /// <param name="x">The number.</param>
-        public static bool IsOdd(int x) => x % 2 != 0;
     }
 }
