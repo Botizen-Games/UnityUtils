@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BG.UnityUtils
+namespace BG.UnityUtils.Runtime
 {
     public abstract class RuntimeCollection<T> : ScriptableObject
     {

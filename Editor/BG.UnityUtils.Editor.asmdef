@@ -1,5 +1,6 @@
 {
-    "name": "BotizenGames.UnityUtils.Editor",
+    "name": "BG.UnityUtils.Editor",
+    "rootNamespace": "BG.UnityUtils.Editor",
     "references": [
         "GUID:9d7a0f084bdc94348b0dcc79709a888a"
     ],

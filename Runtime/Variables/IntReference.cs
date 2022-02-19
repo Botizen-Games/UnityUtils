@@ -1,4 +1,4 @@
-namespace BG.UnityUtils
+namespace BG.UnityUtils.Runtime
 {
     [System.Serializable]
     public class IntReference : VariableReference<int>

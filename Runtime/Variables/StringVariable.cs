@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BG.UnityUtils
+namespace BG.UnityUtils.Runtime
 {
     [CreateAssetMenu(fileName = "StringVariable", menuName = "Variables/String")]
     public class StringVariable : TypeVariable<string>

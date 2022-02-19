@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BG.UnityUtils
+namespace BG.UnityUtils.Runtime
 {
     [CreateAssetMenu(fileName = "FloatVariable", menuName = "Variables/Float")]
     public class FloatVariable : TypeVariable<float>

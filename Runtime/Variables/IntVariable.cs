@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BG.UnityUtils
+namespace BG.UnityUtils.Runtime
 {
     [CreateAssetMenu(fileName = "IntVariable", menuName = "Variables/Int")]
     public class IntVariable : TypeVariable<int>

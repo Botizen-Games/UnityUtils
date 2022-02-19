@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BG.UnityUtils
+namespace BG.UnityUtils.Runtime
 {
     [System.Serializable]
     [CreateAssetMenu]
