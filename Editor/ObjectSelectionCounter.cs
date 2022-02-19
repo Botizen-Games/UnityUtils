@@ -5,7 +5,7 @@ namespace BG.UnityUtils.Editor
 {
     public class ObjectSelectionCounter : EditorWindow
     {
-        [MenuItem("UnityUtils/Count Object Selection", false, 1)]
+        [MenuItem("Tools/Botizen Games/Count Object Selection", false, 1)]
         static void CountObjectSelection()
         {
             GetWindow<ObjectSelectionCounter>();

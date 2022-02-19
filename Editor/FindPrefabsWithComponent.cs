@@ -15,7 +15,7 @@ namespace BG.UnityUtils.Editor
         private bool hasCheckedForReferences = false;
         private string lastName;
 
-        [MenuItem("UnityUtils/Find Prefabs With Component", false, 1)]
+        [MenuItem("Tools/Botizen Games/Find Prefabs With Component", false, 1)]
         public static void Init()
         {
             FindPrefabsWithComponent window = (FindPrefabsWithComponent)EditorWindow.GetWindow(typeof(FindPrefabsWithComponent));

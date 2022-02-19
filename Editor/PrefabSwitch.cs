@@ -7,7 +7,7 @@ namespace BG.UnityUtils.Editor
     {
         [SerializeField] private GameObject prefab;
 
-        [MenuItem("UnityUtils/Prefab Switch", false, 1)]
+        [MenuItem("Tools/Botizen Games/Prefab Switch", false, 1)]
         static void ShowWindow()
         {
             var window = GetWindow<PrefabSwitch>();

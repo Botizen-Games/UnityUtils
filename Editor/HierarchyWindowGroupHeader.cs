@@ -50,7 +50,7 @@ namespace BG.UnityUtils.Editor
             }
         }
 
-        [MenuItem("UnityUtils/Hierarchy Window Group Header Settings...")]
+        [MenuItem("Tools/Botizen Games/Hierarchy Window Group Header Settings...")]
         static void ShowWindow()
         {
             var window = GetWindow<HierarchyWindowGroupHeaderEditorWindow>();

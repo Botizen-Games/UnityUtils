@@ -7,7 +7,7 @@ namespace BG.UnityUtils.Editor
 {
     public class SelectGameObjectsWithMissingScripts : UnityEditor.Editor
     {
-        [MenuItem("UnityUtils/Select GameObjects With Missing Scripts", false, 1)]
+        [MenuItem("Tools/Botizen Games/Select GameObjects With Missing Scripts", false, 1)]
         static void SelectGameObjects()
         {
             // Get the current scene and all top-level GameObjects in the scene hierarchy

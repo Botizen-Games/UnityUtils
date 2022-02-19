@@ -9,7 +9,7 @@ namespace BG.UnityUtils.Editor
     {
         private Vector2 scrollPos;
 
-        [MenuItem("UnityUtils/Scene Switcher", false, 0)]
+        [MenuItem("Tools/Botizen Games/Scene Switcher", false, 0)]
         static void Init()
         {
             var window = (SceneSwitcher)GetWindow(typeof(SceneSwitcher), false, "Scene Switcher");
@@ -45,7 +45,7 @@ namespace BG.UnityUtils.Editor
             EditorGUILayout.EndVertical();
         }
 
-        [MenuItem("UnityUtils/Open All Build Scenes")]
+        [MenuItem("Tools/Botizen Games/Open All Build Scenes")]
         public static void OpenAllBuildScenes()
         {
             for (int i = 0; i < EditorBuildSettings.scenes.Length; i++)
@@ -59,7 +59,7 @@ namespace BG.UnityUtils.Editor
             }
         }
 
-        [MenuItem("UnityUtils/Close Multi-scene")]
+        [MenuItem("Tools/Botizen Games/Close Multi-scene")]
         public static void CloseMultiscene()
         {
             if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())

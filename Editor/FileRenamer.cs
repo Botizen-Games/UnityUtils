@@ -78,7 +78,7 @@ namespace BG.UnityUtils.Editor
         #endregion
         #endregion
 
-        [MenuItem("UnityUtils/File Renamer", false, -10)]
+        [MenuItem("Tools/Botizen Games/File Renamer", false, -10)]
         static void ShowWindow()
         {
             var window = GetWindow<FileRenamer>();

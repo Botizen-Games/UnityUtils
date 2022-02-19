@@ -13,7 +13,7 @@ namespace BG.UnityUtils.Editor
         private int ignoreTypesMask;
         private int dialogMaxPathDisplayCount = 50;
 
-        [MenuItem("UnityUtils/Object Dirtier", false, -10)]
+        [MenuItem("Tools/Botizen Games/Object Dirtier", false, -10)]
         static void ShowWindow()
         {
             var window = GetWindow<ObjectDirtier>();

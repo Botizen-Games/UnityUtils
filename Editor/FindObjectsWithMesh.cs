@@ -15,7 +15,7 @@ namespace BG.UnityUtils.Editor
         private Vector2 sceneResultsScrollPosition = Vector2.zero;
         private Vector2 projectResultsScrollPosition = Vector2.zero;
 
-        [MenuItem("UnityUtils/Find Objects With Mesh", false, 1)]
+        [MenuItem("Tools/Botizen Games/Find Objects With Mesh", false, 1)]
         public static void Init()
         {
             FindObjectsWithMesh window = (FindObjectsWithMesh)EditorWindow.GetWindow(typeof(FindObjectsWithMesh));
